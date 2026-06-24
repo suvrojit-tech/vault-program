@@ -3,17 +3,26 @@ using namespace std;
 
 int main() 
 {
-    int pass=123456;
+    int pass;
     int input;
+    int a=3;
+    cout<<"please set password: ";
+    cin>>pass;
     cout<<"please enter password: ";
     cin>>input;
+    while(input!=pass && a>0)
+    {
+        cout<<"Wrong password, "<<a<<" attempt left. try again.\nplease enter password: ";
+        a--;
+        cin>>input;
+    }
     if(pass==input)
     {
         cout<<"welcome user";
     }
     else
     {
-        cout<<"wrong password";
+        cout<<"You have reach limit try again 24 hrs later";
     }
     return 0;
 }
