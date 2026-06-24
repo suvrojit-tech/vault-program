@@ -1,15 +1,47 @@
 #include <iostream>
 #include <thread>
 #include <chrono>
+#include <fstream>
 using namespace std;
-
+int vault()
+{
+    int pass;
+    do
+    {
+        cout<<"enter a six digit password";
+        cin>>pass;
+        if(pass<100000||pass>999999)
+        {
+            cout<<"invalid password try again";
+        }
+    }
+    while (pass<100000||pass>999999);
+    
+    ofstream outFile("password.txt");
+    if(outFile.is_open())
+    {
+        outFile<<pass;
+        outFile.close();
+    }
+    system("cls");
+    return pass;
+    
+}
 int main() 
 {
     int pass;
     int input;
     int a=3;
-    cout<<"please set password: ";
-    cin>>pass;
+    ifstream infile("password.txt");
+    if (!infile.is_open())
+    {
+        pass=vault();
+    }
+    else
+    {
+        infile>> pass;
+        infile.close();
+    }
     cout<<"please enter password: ";
     cin>>input;
     while(input!=pass && a>0)
