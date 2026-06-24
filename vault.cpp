@@ -1,4 +1,6 @@
 #include <iostream>
+#include <thread>
+#include <chrono>
 using namespace std;
 
 int main() 
@@ -22,7 +24,8 @@ int main()
     }
     else
     {
-        cout<<"You have reach limit try again 24 hrs later";
+        cout<<"Maximum attempts reached! Device locked for 5 seconds.\n";
+        this_thread::sleep_for(chrono::seconds(5));
     }
     return 0;
 }
